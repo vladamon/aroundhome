@@ -7,5 +7,6 @@ export const initialState = {
   errorFetchingCompaniesData: false,
   fetchedCompaniesData: false,
   companiesOnlyList: [],
-  companiesData: []
+  companiesData: [],
+  companiesDataParsed: []
 }

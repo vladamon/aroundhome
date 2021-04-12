@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet'
 import { Box, Container } from '@material-ui/core'
 
-import CompanySelector from '../components/company/CompanySelector'
+import SelectorToolbar from '../components/company/SelectorToolbar'
+import CompanyList from '../components/company/CompanyList'
 
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -41,9 +42,10 @@ const CompanyScheduler = () => {
       >
         <Container maxWidth={false}>
           {/* <CompanyListToolbar /> */}
-          <CompanySelector
+          <SelectorToolbar
             companies={companiesOnlyList} onSchedule={onSchedule}
-          ></CompanySelector>
+          ></SelectorToolbar>
+          <CompanyList></CompanyList>
           <Box sx={{ pt: 3 }}>
             {/* <CompanyListResults companies={companiesOnlyList} fetchPage={onFetchPage} /> */}
           </Box>

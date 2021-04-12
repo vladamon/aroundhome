@@ -3,6 +3,8 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import * as types from './types'
 import * as api from '../../api/company'
 
+import * as helpers from '../../utils/timeManagement'
+
 function * getCompanyByIdSaga ({ payload }) {
   try {
     const result = yield call(api.getCompanyById, payload)
@@ -22,6 +24,8 @@ function * getCompanyByIdSaga ({ payload }) {
 function * getCompanyByIdsSaga ({ payload }) {
   try {
     const result = yield call(api.getCompanyByIds, payload)
+
+    const newData = helpers.parseSlotsData(result)
 
     yield put({
       type: types.getCompanyByIdsSuccess,
