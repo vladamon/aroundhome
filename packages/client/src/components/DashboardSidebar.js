@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useEffect } from 'react'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import {
   Avatar,
   Box,
@@ -10,7 +10,7 @@ import {
   Hidden,
   List,
   Typography
-} from '@material-ui/core';
+} from '@material-ui/core'
 import {
   AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
@@ -20,14 +20,14 @@ import {
   User as UserIcon,
   UserPlus as UserPlusIcon,
   Users as UsersIcon
-} from 'react-feather';
-import NavItem from './NavItem';
+} from 'react-feather'
+import NavItem from './NavItem'
 
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   jobTitle: 'Senior Frontend Developer',
   name: 'Vladimir Cutkovic'
-};
+}
 
 const items = [
   {
@@ -45,16 +45,16 @@ const items = [
     icon: SettingsIcon,
     title: 'Settings'
   }
-];
+]
 
 const DashboardSidebar = ({ onMobileClose, openMobile }) => {
-  const location = useLocation();
+  const location = useLocation()
 
   useEffect(() => {
     if (openMobile && onMobileClose) {
-      onMobileClose();
+      onMobileClose()
     }
-  }, [location.pathname]);
+  }, [location.pathname])
 
   const content = (
     <Box
@@ -80,17 +80,17 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
             width: 64,
             height: 64
           }}
-          to="/app/account"
+          to='/app/account'
         />
         <Typography
-          color="textPrimary"
-          variant="h5"
+          color='textPrimary'
+          variant='h5'
         >
           {user.name}
         </Typography>
         <Typography
-          color="textSecondary"
-          variant="body2"
+          color='textSecondary'
+          variant='body2'
         >
           {user.jobTitle}
         </Typography>
@@ -115,19 +115,18 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
           m: 2,
           p: 2
         }}
-      >
-      </Box>
+      />
     </Box>
-  );
+  )
 
   return (
     <>
       <Hidden lgUp>
         <Drawer
-          anchor="left"
+          anchor='left'
           onClose={onMobileClose}
           open={openMobile}
-          variant="temporary"
+          variant='temporary'
           PaperProps={{
             sx: {
               width: 256
@@ -139,9 +138,9 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
       </Hidden>
       <Hidden lgDown>
         <Drawer
-          anchor="left"
+          anchor='left'
           open
-          variant="persistent"
+          variant='persistent'
           PaperProps={{
             sx: {
               width: 256,
@@ -154,17 +153,17 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
         </Drawer>
       </Hidden>
     </>
-  );
-};
+  )
+}
 
 DashboardSidebar.propTypes = {
   onMobileClose: PropTypes.func,
   openMobile: PropTypes.bool
-};
+}
 
 DashboardSidebar.defaultProps = {
   onMobileClose: () => { },
   openMobile: false
-};
+}
 
-export default DashboardSidebar;
+export default DashboardSidebar

@@ -1,42 +1,66 @@
 import { DateTime } from 'luxon'
 
-export const parseDate = (dateISO) => {
-  return DateTime.fromISO(dateISO)
+const parseISODate = (dateISO) => DateTime.fromISO(dateISO).toLocaleString(DateTime.DATETIME_SHORT)
+
+const parseDateOnly = (dateISO) => DateTime.fromISO(dateISO).toLocaleString(DateTime.DATE_SHORT)
+
+const getSlotOnly = (start, end) => {
+  const startSlot = start.split(',')[1].trim()
+  const endSlot = end.split(',')[1].trim()
+
+  return `${startSlot}-${endSlot}`
 }
 
-export const parseSlotsData = (companies) => {
-  const finalArr = {}
+const parseTimeSlot = ({ start_time, end_time }) => {
+  const humanReadableStart = parseISODate(start_time)
+  const humanReadableEnd = parseISODate(end_time)
+  const dateOnly = parseDateOnly(start_time)
+  const slot = getSlotOnly(humanReadableStart, humanReadableEnd)
 
+  return {
+    start_time: humanReadableStart,
+    end_time: humanReadableEnd,
+    date: dateOnly,
+    slot: slot,
+    start_time_iso: start_time,
+    end_time_iso: end_time
+  }
+}
+
+export const doSlotsOverlap = (selectedSlotData, slotStart, slotEnd) => {
+  const start = DateTime.fromISO(slotStart).toSeconds()
+  const end = DateTime.fromISO(slotEnd).toSeconds()
+
+  const selectedStart = DateTime.fromISO(selectedSlotData.start).toSeconds()
+  const selectedEnd = DateTime.fromISO(selectedSlotData.end).toSeconds()
+
+  return start < selectedEnd && end > selectedStart
+}
+
+export const parseCompanyData = (companies) => {
   const parsedArr = companies.map((company) => {
     return {
       ...company,
-      time_slots: company.time_slots.map(({start_date, end_date}) => ({
-        start_date: parseDate(start_date),
-        end_date: parseDate(end_date)
-      }))
+      time_slots: company.time_slots.map(slot => parseTimeSlot(slot))
     }
   })
 
-  const result = parsedArr.reduce(item => {
-    const startDate = DateTime.fromISO(item.start_date)
-    const endDate = DateTime.fromISO(item.end_date)
-    const day = startDate.day
-    const month = startDate.month
-    const year = startDate.year
+  const result = parsedArr.map(cmp => {
+    return {
+      ...cmp,
+      groupedTimeSlots: cmp.time_slots.reduce((acc, item) => {
+        const { date } = item
 
-    const formatted = `${day}/${month}/${year}`
+        if (!acc[date]) {
+          acc[date] = []
+        }
 
-    if (!finalArr[formatted]) {
-      finalArr[formatted] = []
+        acc[date].push(item)
+
+        return acc
+      }, {})
     }
-
-    finalArr[formatted].push({
-      start_date: startDate,
-      end_date: endDate
-    })
-
-    return finalArr
-  }, finalArr)
+  })
 
   return result
 }

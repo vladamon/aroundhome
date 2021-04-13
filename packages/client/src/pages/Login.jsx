@@ -1,7 +1,7 @@
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import * as Yup from 'yup';
-import { Formik } from 'formik';
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
+import * as Yup from 'yup'
+import { Formik } from 'formik'
 import {
   Box,
   Button,
@@ -10,12 +10,12 @@ import {
   Link,
   TextField,
   Typography
-} from '@material-ui/core';
-import FacebookIcon from '../icons/Facebook';
-import GoogleIcon from '../icons/Google';
+} from '@material-ui/core'
+import FacebookIcon from '../icons/Facebook'
+import GoogleIcon from '../icons/Google'
 
 const Login = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <>
@@ -31,7 +31,7 @@ const Login = () => {
           justifyContent: 'center'
         }}
       >
-        <Container maxWidth="sm">
+        <Container maxWidth='sm'>
           <Formik
             initialValues={{
               email: 'demo@aroundhome.com',
@@ -42,7 +42,7 @@ const Login = () => {
               password: Yup.string().max(255).required('Password is required')
             })}
             onSubmit={() => {
-              navigate('/app/dashboard', { replace: true });
+              navigate('/app/dashboard', { replace: true })
             }}
           >
             {({
@@ -57,15 +57,15 @@ const Login = () => {
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 3 }}>
                   <Typography
-                    color="textPrimary"
-                    variant="h2"
+                    color='textPrimary'
+                    variant='h2'
                   >
                     Sign in
                   </Typography>
                   <Typography
-                    color="textSecondary"
+                    color='textSecondary'
                     gutterBottom
-                    variant="body2"
+                    variant='body2'
                   >
                     Sign in on the internal platform
                   </Typography>
@@ -80,12 +80,12 @@ const Login = () => {
                     md={6}
                   >
                     <Button
-                      color="primary"
+                      color='primary'
                       fullWidth
                       startIcon={<FacebookIcon />}
                       onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
+                      size='large'
+                      variant='contained'
                     >
                       Login with Facebook
                     </Button>
@@ -99,8 +99,8 @@ const Login = () => {
                       fullWidth
                       startIcon={<GoogleIcon />}
                       onClick={handleSubmit}
-                      size="large"
-                      variant="contained"
+                      size='large'
+                      variant='contained'
                     >
                       Login with Google
                     </Button>
@@ -113,9 +113,9 @@ const Login = () => {
                   }}
                 >
                   <Typography
-                    align="center"
-                    color="textSecondary"
-                    variant="body1"
+                    align='center'
+                    color='textSecondary'
+                    variant='body1'
                   >
                     or login with email address
                   </Typography>
@@ -124,50 +124,50 @@ const Login = () => {
                   error={Boolean(touched.email && errors.email)}
                   fullWidth
                   helperText={touched.email && errors.email}
-                  label="Email Address"
-                  margin="normal"
-                  name="email"
+                  label='Email Address'
+                  margin='normal'
+                  name='email'
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  type="email"
+                  type='email'
                   value={values.email}
-                  variant="outlined"
+                  variant='outlined'
                 />
                 <TextField
                   error={Boolean(touched.password && errors.password)}
                   fullWidth
                   helperText={touched.password && errors.password}
-                  label="Password"
-                  margin="normal"
-                  name="password"
+                  label='Password'
+                  margin='normal'
+                  name='password'
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  type="password"
+                  type='password'
                   value={values.password}
-                  variant="outlined"
+                  variant='outlined'
                 />
                 <Box sx={{ py: 2 }}>
                   <Button
-                    color="primary"
+                    color='primary'
                     disabled={isSubmitting}
                     fullWidth
-                    size="large"
-                    type="submit"
-                    variant="contained"
+                    size='large'
+                    type='submit'
+                    variant='contained'
                   >
                     Sign in now
                   </Button>
                 </Box>
                 <Typography
-                  color="textSecondary"
-                  variant="body1"
+                  color='textSecondary'
+                  variant='body1'
                 >
                   Don&apos;t have an account?
                   {' '}
                   <Link
                     component={RouterLink}
-                    to="/register"
-                    variant="h6"
+                    to='/register'
+                    variant='h6'
                   >
                     Sign up
                   </Link>
@@ -178,7 +178,7 @@ const Login = () => {
         </Container>
       </Box>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

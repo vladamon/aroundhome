@@ -1,6 +1,6 @@
-import { Link as RouterLink } from 'react-router-dom';
-import { AppBar, Toolbar } from '@material-ui/core';
-import Logo from './Logo';
+import { Link as RouterLink } from 'react-router-dom'
+import { AppBar, Toolbar } from '@material-ui/core'
+import Logo from './Logo'
 
 const MainNavbar = (props) => (
   <AppBar
@@ -8,11 +8,11 @@ const MainNavbar = (props) => (
     {...props}
   >
     <Toolbar sx={{ height: 64 }}>
-      <RouterLink to="/">
+      <RouterLink to='/'>
         <Logo />
       </RouterLink>
     </Toolbar>
   </AppBar>
-);
+)
 
-export default MainNavbar;
+export default MainNavbar

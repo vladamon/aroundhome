@@ -12,7 +12,7 @@ import * as actions from '../store/companies/actions'
 const CompanyScheduler = () => {
   const dispatch = useDispatch()
 
-  let companiesOnlyList = useSelector((state) => state.companies.companiesOnlyList)
+  const companiesOnlyList = useSelector((state) => state.companies.companiesOnlyList)
 
   const [selectedCompanyIds, setSelectedCompanyIds] = useState([])
 
@@ -44,8 +44,8 @@ const CompanyScheduler = () => {
           {/* <CompanyListToolbar /> */}
           <SelectorToolbar
             companies={companiesOnlyList} onSchedule={onSchedule}
-          ></SelectorToolbar>
-          <CompanyList></CompanyList>
+          />
+          <CompanyList />
           <Box sx={{ pt: 3 }}>
             {/* <CompanyListResults companies={companiesOnlyList} fetchPage={onFetchPage} /> */}
           </Box>

@@ -44,8 +44,8 @@ export const getCompanyMany = async () => {
       query: gql`
         query {
           companyMany {
-            _id,
-            name,
+            _id
+            name
             type
           }
         }

@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -14,37 +13,28 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-// function renderRow (props) {
-//   const { index, style, data } = props
-
-//   return (
-//     <ListItem id={index} button style={style} key={index} onClick={handleRowClick}>
-//       <ListItemText primary={`${data[index].name}`} />
-//     </ListItem>
-//   )
-// }
-
 function getItemsCount (data) {
   return Array.isArray(data) ? data.length : 0
 }
 
-// renderRow.propTypes = {
-//   index: PropTypes.number.isRequired,
-//   style: PropTypes.object.isRequired
-// }
-
 export default function VirtualizedList ({ data = [], onItemSelect, ...rest }) {
   const classes = useStyles()
 
-  const handleRowClick = (e) => {
+  const handleRowClick = e => {
     onItemSelect(e.currentTarget.id)
   }
 
-  const renderRow = (props) => {
+  const renderRow = props => {
     const { index, style, data } = props
 
     return (
-      <ListItem id={index} button style={style} key={index} onClick={handleRowClick}>
+      <ListItem
+        id={index}
+        button
+        style={style}
+        key={index}
+        onClick={handleRowClick}
+      >
         <ListItemText primary={`${data[index].name}`} />
       </ListItem>
     )

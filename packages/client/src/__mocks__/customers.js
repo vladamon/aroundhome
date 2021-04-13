@@ -1,4 +1,4 @@
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from 'uuid'
 
 export default [
   {
@@ -141,4 +141,4 @@ export default [
     name: 'Merrile Burgett',
     phone: '801-301-7894'
   }
-];
+]

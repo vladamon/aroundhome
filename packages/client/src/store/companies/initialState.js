@@ -1,5 +1,6 @@
 export const initialState = {
   selectedCompanies: [],
+  selectedSlots: {}, // [{ company_id: slot}]
   fetchingCompanies: false,
   errorFetchingCompanies: null,
   fetchedCompanies: false,

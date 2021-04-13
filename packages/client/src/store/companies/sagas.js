@@ -25,11 +25,11 @@ function * getCompanyByIdsSaga ({ payload }) {
   try {
     const result = yield call(api.getCompanyByIds, payload)
 
-    const newData = helpers.parseSlotsData(result)
+    const parsedCompanyData = helpers.parseCompanyData(result)
 
     yield put({
       type: types.getCompanyByIdsSuccess,
-      payload: result
+      payload: parsedCompanyData
     })
   } catch (ex) {
     yield put({
@@ -86,7 +86,6 @@ function * getCompanyCountSaga ({ payload }) {
     })
   }
 }
-
 
 export const sagas = [
   takeLatest(types.getCompanyById, getCompanyByIdSaga),

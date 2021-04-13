@@ -1,14 +1,10 @@
 import { Helmet } from 'react-helmet'
 import { Box, Container, Grid, Pagination } from '@material-ui/core'
 import CompanyCard from './CompanyCard'
-
-import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 const CompanyList = () => {
-  const dispatch = useDispatch()
-
-  const companies = useSelector((state) => state.companies.companiesData)
+  const companies = useSelector(state => state.companies.companiesData)
   return (
     <>
       <Helmet>

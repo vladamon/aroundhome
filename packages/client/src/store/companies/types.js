@@ -18,7 +18,6 @@ export const getCompanyCount = 'GET_COMPANY_COUNT'
 export const getCompanyCountSuccess = 'GET_COMPANY_COUNT_SUCCESS'
 export const getCompanyCountError = 'GET_COMPANY_COUNT_ERROR'
 
-
-
-
-
+export const selectSlotForCompany = 'SELECT_SLOT_FOR_COMPANY'
+export const removeSelectedSlot = 'REMOVE_SELECTED_SLOT'
+export const removeCompany = 'REMOVE_COMPANY'
