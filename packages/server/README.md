@@ -1,4 +1,4 @@
-# Scheduling Demo - React base client
+# Scheduling Demo - Node based server with GraphQL API
 
 Scheduling Demo is a small take-home assignment with simple UI built in React. It features basic scheduling logic.
 
@@ -7,7 +7,7 @@ Scheduling Demo is a small take-home assignment with simple UI built in React. I
 Clone the repository and run this to install dependencies:
 
 ```javascript
-cd client
+cd server
 
 npm install
 ```
@@ -17,10 +17,10 @@ npm install
 Voila, you're ready to go! Just run this from the root:
 
 ```javascript
-npm run start
+npm run dev
 ```
 
-Your client app will run on the http://localhost:3000 (or some other port if this is taken). From there you can start playing with the app :)
+Your client app will run on the http://localhost:8000
 
 Happy using experience!
 

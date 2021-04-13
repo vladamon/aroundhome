@@ -1,4 +1,4 @@
-# Scheduling Demo - React base client
+# Scheduling Demo
 
 Scheduling Demo is a small take-home assignment with simple UI built in React. It features basic scheduling logic.
 
@@ -7,9 +7,15 @@ Scheduling Demo is a small take-home assignment with simple UI built in React. I
 Clone the repository and run this to install dependencies:
 
 ```javascript
-cd client
+cd aroundhome
 
 npm install
+```
+
+Since there are two packages - React based client and a server combined in monorepo organized with Lerna, after installing dependencies, you should bootstrap it with:
+
+```javascript
+lerna bootstrap
 ```
 
 ## Usage
@@ -21,6 +27,8 @@ npm run start
 ```
 
 Your client app will run on the http://localhost:3000 (or some other port if this is taken). From there you can start playing with the app :)
+
+Your local server will run on the http://localhost:8000
 
 Happy using experience!
 
