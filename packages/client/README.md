@@ -1,4 +1,4 @@
-# Scheduling Demo - React base client
+# Scheduling Demo - React based client
 
 Scheduling Demo is a small take-home assignment with simple UI built in React. It features basic scheduling logic.
 
